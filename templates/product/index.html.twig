@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProductController!{% endblock %}
+{% block title %}製品紹介ページ{% endblock %}
 
 {% block body %}
+    <h1>製品紹介ページ</h1>
     <table>
         <thead>
             <tr>
@@ -16,7 +17,11 @@
         {% for product in products %}
             <tr>
                 <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
+                <td>
+                    <a href="{{ path('product_show', {'id': product.id}) }}">
+                        {{ product.name }}
+                    </a>
+                </td>
                 <td>{{ product.description }}</td>
                 <td>{{ product.size }}</td>
             </tr>
