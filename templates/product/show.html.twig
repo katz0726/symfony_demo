@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Product</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>商品名</th>
+                <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+                <th>説明</th>
+                <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+                <th>数量</th>
+                <td>{{ product.size }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
