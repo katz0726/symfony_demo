@@ -52,6 +52,9 @@ class ProductController extends AbstractController
 
             $manager->flush();
 
+            // フラッシュメッセージを表示
+            $this->addFlash('notice', 'Prodyct created successfully!');
+
             return $this->redirectToRoute('product_index');
         }
 
