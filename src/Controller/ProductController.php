@@ -47,18 +47,39 @@ class ProductController extends AbstractController
 
         // Formが送信された場合の処理
         $form->handleRequest($request);
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $manager->persist($product);
 
             $manager->flush();
 
             // フラッシュメッセージを表示
-            $this->addFlash('notice', 'Prodyct created successfully!');
+            $this->addFlash('notice', 'Product created successfully!');
 
             return $this->redirectToRoute('product_index');
         }
 
         return $this->render('product/new.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/product/{id<\d+>}/edit', name: 'product_edit')]
+    public function edit(Product $product, Request $request, EntityManagerInterface $manager): Response
+    {
+        $form = $this->createForm(ProductType::class, $product);
+
+        // Formが送信された場合の処理
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->flush();
+
+            // フラッシュメッセージを表示
+            $this->addFlash('notice', 'Product updated successfully!');
+
+            return $this->redirectToRoute('product_index');
+        }
+
+        return $this->render('product/edit.html.twig', [
             'form' => $form,
         ]);
     }

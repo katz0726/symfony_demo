@@ -13,6 +13,7 @@
                 <th>商品名</th>
                 <th>説明</th>
                 <th>数量</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,9 @@
                 </td>
                 <td>{{ product.description }}</td>
                 <td>{{ product.size }}</td>
+                <td>
+                    <a href="{{ path('product_edit', {'id': product.id}) }}">編集</a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

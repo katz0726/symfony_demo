@@ -1,0 +1,7 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_row(form.name, {'label': '商品名'}) }}
+    {{ form_row(form.description, {'label': '説明'}) }}
+    {{ form_row(form.size, {'label': '数量'}) }}
+    {{ form_row(form.save, {'label': '更新する'}) }}
+    {{ form_row(form.clear, {'label': 'クリア'}) }}
+{{ form_end(form) }}
