@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}製品紹介ページ{% endblock %}
+
+{% block body %}
+    <h1>商品を登録する</h1>
+
+    <a href={{ path('product_index') }}>戻る</a>
+
+    {{ form_start(form) }}
+        {{ form_row(form.name, {'label': '商品名'}) }}
+
+        {{ form_row(form.description, {'label': '説明'}) }}
+
+        {{ form_row(form.size, {'label': '数量'}) }}
+
+        {{ form_row(form.save, {'label': '登録する'}) }}
+        {{ form_row(form.clear, {'label': 'クリア'}) }}
+    {{ form_end(form) }}
+
+{% endblock %}
