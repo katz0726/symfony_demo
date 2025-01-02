@@ -29,6 +29,9 @@
                 <td>{{ product.size }}</td>
                 <td>
                     <a href="{{ path('product_edit', {'id': product.id}) }}">編集</a>
+                    <a href="{{ path('product_delete', {'id': product.id}) }}"
+                       onclick="return confirm('Are you sure you want to delete this product?')"
+                    >削除</a>
                 </td>
             </tr>
         {% endfor %}

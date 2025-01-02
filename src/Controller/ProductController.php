@@ -83,4 +83,16 @@ class ProductController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    #[Route('/product/{id<\d+>}/delete', name: 'product_delete')]
+    public function  delete(Request $request, Product $product, EntityManagerInterface $manager): Response
+    {
+        $manager->remove($product);
+        $manager->flush();
+
+        // フラッシュメッセージを表示
+        $this->addFlash('notice', 'Product deleted successfully!');
+
+        return $this->render('product_index');
+    }
 }
