@@ -2,14 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
+use App\Form\ProductType;
+use App\Repository\ProductRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Repository\ProductRepository;
-use App\Form\ProductType;
-use App\Entity\Product;
-use Doctrine\ORM\EntityManagerInterface;
 
 class ProductController extends AbstractController
 {
@@ -30,7 +30,7 @@ class ProductController extends AbstractController
         //       リクエストパラメータのIDに該当するProductのEntityが取得できる。
         //       ここでは学習のために明示的にIDを指定して取得している。
         $product = $repository->findOneBy(['id' => $id]);
-        if ($product === null) {
+        if (null === $product) {
             throw $this->createNotFoundException('The product does not exist');
         }
 
@@ -85,7 +85,7 @@ class ProductController extends AbstractController
     }
 
     #[Route('/product/{id<\d+>}/delete', name: 'product_delete')]
-    public function  delete(Request $request, Product $product, EntityManagerInterface $manager): Response
+    public function delete(Request $request, Product $product, EntityManagerInterface $manager): Response
     {
         $manager->remove($product);
         $manager->flush();
